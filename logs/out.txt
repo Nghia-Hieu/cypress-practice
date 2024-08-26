@@ -1,0 +1,51 @@
+cypress\e2e\export-data-import-check\export.cy.js:
+    Export -> Export response
+        cy:request (K): https://freetestapi.com/api/v1/students/1
+                        Status: 200
+                        Response body: {
+                          "id": 1,
+                          "name": "John Doe",
+                          "age": 20,
+                          "gender": "Male",
+                          "address": {
+                            "street": "123 Main Street",
+                            "city": "Cityville",
+                            "zip": "12345",
+                            "country": "USA"
+                          },
+                          "email": "john.doe@example.com",
+                          "phone": "555-123-4567",
+                          "courses": [
+                            "Mathematics",
+                            "Physics"
+                          ],
+                          "gpa": 3.8,
+                          "image": "https://fakeimg.pl/500x500/cc6600"
+                        }
+        cy:command (X): writeFile	cypress/fixtures/responseStudent.json
+
+
+
+cypress\e2e\export-data-import-check\import.cy.js:
+    Import -> Import file
+        cy:command (K): readFile	cypress/fixtures/responseStudent.json
+        cy:command (X): then	function(){}
+
+
+
+cypress\e2e\export-data-import-check\mock.cy.js:
+    Posts Tests -> Post Sample Tests
+      cy:intercept (K): Matcher: {"method":"GET","path":"https://freetestapi.com/api/v1/dogs/1 "}
+                        Mocked Response: {"statusCode":200,"body":[]}
+        cy:command (X): wait	@getDog
+
+
+
+cypress\e2e\get-visit-basic\fourth.cy.js:
+    Mocking API Response -> should mock the response of a POST request
+      cy:intercept (K): Method: GET
+                        Matcher: "https://freetestapi.com/api/v1/students/1"
+                        Mocked Response: {"statusCode":200,"body":{"success":true,"data":{"id":123,"name":"Test Item"}}}
+        cy:command (K): visit	https://example.com
+        cy:command (X): wait	@postResource
+

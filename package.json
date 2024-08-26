@@ -1,0 +1,30 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+    "cy:parallel": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/cypress-parallel-test/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.13.3",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-terminal-report": "^6.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "^5.0.1"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "not dead"
+  ],
+  "dependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-parallel": "^0.14.0"
+  }
+}

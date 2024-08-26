@@ -1,0 +1,63 @@
+{
+  "cypress\\e2e\\export-data-import-check\\export.cy.js": {
+    "Export -> Export response": [
+      {
+        "type": "cy:request",
+        "severity": "success",
+        "message": "https://freetestapi.com/api/v1/students/1\nStatus: 200\nResponse body: {\n  \"id\": 1,\n  \"name\": \"John Doe\",\n  \"age\": 20,\n  \"gender\": \"Male\",\n  \"address\": {\n    \"street\": \"123 Main Street\",\n    \"city\": \"Cityville\",\n    \"zip\": \"12345\",\n    \"country\": \"USA\"\n  },\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"555-123-4567\",\n  \"courses\": [\n    \"Mathematics\",\n    \"Physics\"\n  ],\n  \"gpa\": 3.8,\n  \"image\": \"https://fakeimg.pl/500x500/cc6600\"\n}"
+      },
+      {
+        "type": "cy:command",
+        "severity": "error",
+        "message": "writeFile\tcypress/fixtures/responseStudent.json"
+      }
+    ]
+  },
+  "cypress\\e2e\\export-data-import-check\\import.cy.js": {
+    "Import -> Import file": [
+      {
+        "type": "cy:command",
+        "severity": "success",
+        "message": "readFile\tcypress/fixtures/responseStudent.json"
+      },
+      {
+        "type": "cy:command",
+        "severity": "error",
+        "message": "then\tfunction(){}"
+      }
+    ]
+  },
+  "cypress\\e2e\\export-data-import-check\\mock.cy.js": {
+    "Posts Tests -> Post Sample Tests": [
+      {
+        "type": "cy:intercept",
+        "severity": "success",
+        "message": "Matcher: {\"method\":\"GET\",\"path\":\"https://freetestapi.com/api/v1/dogs/1 \"}\nMocked Response: {\"statusCode\":200,\"body\":[]}"
+      },
+      {
+        "type": "cy:command",
+        "severity": "error",
+        "message": "wait\t@getDog"
+      }
+    ]
+  },
+  "cypress\\e2e\\get-visit-basic\\fourth.cy.js": {
+    "Mocking API Response -> should mock the response of a POST request": [
+      {
+        "type": "cy:intercept",
+        "severity": "success",
+        "message": "Method: GET\nMatcher: \"https://freetestapi.com/api/v1/students/1\"\nMocked Response: {\"statusCode\":200,\"body\":{\"success\":true,\"data\":{\"id\":123,\"name\":\"Test Item\"}}}"
+      },
+      {
+        "type": "cy:command",
+        "severity": "success",
+        "message": "visit\thttps://example.com"
+      },
+      {
+        "type": "cy:command",
+        "severity": "error",
+        "message": "wait\t@postResource"
+      }
+    ]
+  }
+}
